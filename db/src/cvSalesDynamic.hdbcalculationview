@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" id="sales.db::Sales" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
-<descriptions defaultDescription="Sales"/>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" id="sales.db::cvSalesDynamic" applyPrivilegeType="SQL_ANALYTIC_PRIVILEGE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="Sales Dynamic"/>
 <localVariables/>
 <variableMappings/>
 <dataSources>
-  <DataSource id="sales.db::tables.Sales">
-    <resourceUri>sales.db::tables.Sales</resourceUri>
+  <DataSource id="sales.db::sales">
+    <resourceUri>sales.db::sales</resourceUri>
   </DataSource>
 </dataSources>
 <calculationViews/>
-<logicalModel id="sales.db::tables.Sales">
+<logicalModel id="sales.db::sales">
   <attributes>
     <attribute id="region" order="1" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="region"/>
-      <keyMapping columnObjectName="tables.Sales" columnName="region"/>
+      <descriptions defaultDescription="Region"/>
+      <keyMapping columnObjectName="sales" columnName="region"/>
     </attribute>
     <attribute id="country" order="2" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="country"/>
-      <keyMapping columnObjectName="tables.Sales" columnName="country"/>
+      <descriptions defaultDescription="Country"/>
+      <keyMapping columnObjectName="sales" columnName="country"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
   <baseMeasures>
     <measure id="amount" order="3" aggregationType="sum" measureType="simple">
-      <descriptions defaultDescription="amount"/>
-      <measureMapping columnObjectName="tables.Sales" columnName="amount"/>
+      <descriptions defaultDescription="Amount"/>
+      <measureMapping columnObjectName="sales" columnName="amount"/>
     </measure>
   </baseMeasures>
   <calculatedMeasures/>
   <restrictedMeasures/>
   <localDimensions>
-    <localDimension id="Geo">
+    <localDimension id="GEO">
       <attributeRef xsi:type="DataFoundation:Attribute">region</attributeRef>
       <attributeRef xsi:type="DataFoundation:Attribute">country</attributeRef>
       <hierarchies>
-        <hierarchy xsi:type="Dimension:LeveledHierarchy" id="Geo" aggregateAllNodes="true" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="LEVEL_NAME_ENFORCED" cacheEnabled="true" cycleHandling="BREAKUP" emptyValueIsNull="true">
+        <hierarchy xsi:type="Dimension:LeveledHierarchy" id="GEO" aggregateAllNodes="false" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_PATH_ENFORCED" cacheEnabled="true" cycleHandling="BREAKUP" emptyValueIsNull="true">
           <descriptions defaultDescription="Geo"/>
           <unassignedMemberProperties mode="FALSE"/>
           <levels>

@@ -1,4 +1,4 @@
 {
-    "name":    "sales.db",
-    "subfolder": "append"
+  "name": "sales.db",
+  "subfolder": "append"
 }

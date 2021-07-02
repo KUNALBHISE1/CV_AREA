@@ -1,8 +1,29 @@
 {
-	"role": {
-		"name": "sales.db::analytics",
-		"schema_privileges": [{
-			"privileges": ["SELECT"]
-		}]
-	}
+  "role": {
+    "name": "sales.db::analytics",
+        "object_privileges": [
+            {
+                "name": "sales.db::cvSales",
+                "type": "VIEW",
+                "privileges": [ "SELECT" ]
+            },
+            {
+                "name": "sales.db::cvSalesDynamic",
+                "type": "VIEW",
+                "privileges": [ "SELECT" ]
+            },
+            {
+                "name": "sales.db::cvSessionInfo",
+                "type": "VIEW",
+                "privileges": [ "SELECT" ]
+            }
+        ],
+    "schema_analytic_privileges": [
+      {
+        "privileges": [
+          "sales.db::salesDynamic"
+        ]
+      }
+    ]
+  }
 }

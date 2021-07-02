@@ -1,0 +1,7 @@
+structured privilege "sales.db::salesDynamic"
+  for select on "sales.db::cvSalesDynamic"
+        where "region" in (
+          select distinct "region"
+            from "sales.db::users" 
+            where UPPER("user") = SESSION_CONTEXT('XS_APPLICATIONUSER')
+        )

@@ -2,10 +2,10 @@
     "format_version": 1,
     "imports": [
         {
-            "target_table": "sales.db::sales",
+            "target_table": "sales.db::users",
             "source_data": {
                 "data_type": "CSV",
-                "file_name": "sales.db::sales.csv",
+                "file_name": "sales.db::users.csv",
                 "has_header": true,
                 "type_config": {
                     "delimiter": ",",
@@ -14,10 +14,8 @@
             },
             "import_settings": {
                 "import_columns": [
-                    "id",
-                    "region",
-                    "country",
-                    "amount"
+                    "user",
+                    "region"
                 ]
             }
         }

@@ -1,0 +1,8 @@
+{
+  "sales.db::sys.dummy": {
+    "target": {
+      "object": "DUMMY",
+      "schema": "SYS"
+    }
+  }
+}

@@ -1,16 +1,27 @@
+_schema-version: '3.2'
 ID: sales
-_schema-version: '2.1'
 version: 0.0.1
 
 modules:
- - name: sales-db
-   type: hdb
-   path: db
-   requires:
-    - name: sales-hdi
+  # ---------------- DATABASE DEPLOYER MODULE ------------------
+  - name: sales-db
+  # ------------------------------------------------------------
+    type: hdb
+    path: db
+    parameters:
+      buildpack: nodejs_buildpack
+      memory: 256M
+      disk-quota: 1024M
+    requires:
+      - name: sales-hdi
 
 resources:
- - name: sales-hdi
-   properties:
-      hdi-container-name: ${service-name}
-   type: com.sap.xs.hdi-container
+  # ------------------- HDI CONTAINER SERVICE ------------------
+  - name: sales-hdi
+  # ------------------------------------------------------------
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+    properties:
+      hdi-service-name: ${service-name}

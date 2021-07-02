@@ -1,0 +1,32 @@
+FUNCTION "sales.db::tfSessionInfo" ( )
+  RETURNS TABLE (
+    "name"  NVARCHAR(512),
+    "value" NVARCHAR(512)
+  )
+  LANGUAGE SQLSCRIPT
+  AS
+  BEGIN
+    return
+        select 'SESSION_USER' as "name", session_user as "value" from "sales.db::sys.dummy"
+        UNION ALL
+        select 'XS_APPLICATIONUSER' as "name", SESSION_CONTEXT('XS_APPLICATIONUSER') as "value" from "sales.db::sys.dummy"
+        UNION ALL
+        select 'APPLICATION' as "name", SESSION_CONTEXT('APPLICATION') as "value" from "sales.db::sys.dummy"
+        UNION ALL
+        select 'APPLICATION_USER' as "name", SESSION_CONTEXT('APPLICATIONUSER') as "value" from "sales.db::sys.dummy"
+        UNION ALL
+        select 'APPLICATION_VERSION' as "name", SESSION_CONTEXT('APPLICATIONVERSION') as "value" from "sales.db::sys.dummy"
+        UNION ALL
+        select 'DRIVER_VERSION' as "name", SESSION_CONTEXT('DRIVERVERSION') as "value" from "sales.db::sys.dummy"
+        UNION ALL
+        select 'PROTOCOL_VERSION' as "name", SESSION_CONTEXT('PROTOCOL_VERSION') as "value" from "sales.db::sys.dummy"
+        UNION ALL
+        select 'CURRENT_CONNECTION' as "name", TO_NVARCHAR(current_connection) as "value" from "sales.db::sys.dummy"
+        UNION ALL
+        select 'CURRENT_USER' as "name", current_user as "value" from "sales.db::sys.dummy"
+        UNION ALL
+        select 'CURRENT_SCHEMA' as "name", current_schema as "value" from "sales.db::sys.dummy"
+        UNION ALL
+        select 'CURRENT_TIMESTAMP' as "name", TO_NVARCHAR(current_timestamp) as "value" from "sales.db::sys.dummy"
+        ;
+  END;

@@ -1,0 +1,5 @@
+COLUMN TABLE "sales.db::users" 
+  (
+    "user" VARCHAR(100), 
+    "region" VARCHAR(100)
+  )

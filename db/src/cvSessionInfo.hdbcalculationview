@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="sales.db::cvSessionInfo" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="Session Info"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="sales.db::tfSessionInfo" type="TABLE_FUNCTION">
+    <resourceUri>sales.db::tfSessionInfo</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="sales.db::tfSessionInfo">
+  <attributes>
+    <attribute id="name" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Name"/>
+      <keyMapping columnObjectName="tfSessionInfo" columnName="name"/>
+    </attribute>
+    <attribute id="value" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Value"/>
+      <keyMapping columnObjectName="tfSessionInfo" columnName="value"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
